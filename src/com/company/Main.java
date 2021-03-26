@@ -3,7 +3,6 @@ package com.company;
 import com.company.GUI.Components;
 import com.company.GUI.MainFrame;
 import com.company.GUI.MainPanel;
-import com.sun.jna.platform.WindowUtils;
 import oshi.SystemInfo;
 import oshi.hardware.CentralProcessor;
 import oshi.hardware.ComputerSystem;
@@ -13,8 +12,6 @@ import oshi.software.os.OperatingSystem;
 import javax.swing.*;
 import java.awt.*;
 import java.util.Arrays;
-
-import static java.awt.GraphicsDevice.WindowTranslucency.TRANSLUCENT;
 
 
 public class Main {
@@ -26,26 +23,29 @@ public class Main {
         CentralProcessor cpu = hal.getProcessor();
         ComputerSystem cs = hal.getComputerSystem();
 
+        System.out.println("-------------------------------------------------");
+
         System.out.println("Software Information:");
-        System.out.println(os.getVersionInfo());
-        System.out.println(os.getBitness());
-        System.out.println(os.getFamily());
-        System.out.println(os.getFileSystem());
-        System.out.println(os.getManufacturer());
-        System.out.println(os.getProcesses());
-        System.out.println(os.getThreadCount());
-        System.out.println(os.getProcess(0));
-        System.out.println(os.getProcess(1));
-        System.out.println(os.getDesktopWindows(true));
-        System.out.println(os.getInternetProtocolStats());
-        System.out.println(os.getNetworkParams());
-        System.out.println(os.getProcessCount());
-        System.out.println(os.getProcessId());
-        System.out.println((Arrays.toString(os.getServices())));
-        System.out.println(os.getSessions());
-        System.out.println(os.getSystemBootTime());
-        System.out.println(os.getSystemUptime());
-        System.out.println(os.isElevated());
+        System.out.println("Version info: " + os.getVersionInfo());
+        System.out.println("Bitness: " + os.getBitness());
+        System.out.println("Family: " + os.getFamily());
+        System.out.println("File System: " + os.getFileSystem());
+        System.out.println("Manufacturer: " + os.getManufacturer());
+        System.out.println("Processes: " + os.getProcesses());
+        System.out.println("Thread count: " + os.getThreadCount());
+        System.out.println("Process 1: " + os.getProcess(1));
+        System.out.println("DesktopWindows: " + os.getDesktopWindows(false));
+        System.out.println("Internet Protocol Stats: " + os.getInternetProtocolStats());
+        System.out.println("Network Params: " + os.getNetworkParams());
+        System.out.println("Process Count: " + os.getProcessCount());
+        System.out.println("Process Id: " + os.getProcessId());
+        System.out.println("Services: " + (Arrays.toString(os.getServices())));
+        System.out.println("Sessions: " + os.getSessions());
+        System.out.println("Boot time: " + os.getSystemBootTime());
+        System.out.println("System Uptime: " + os.getSystemUptime());
+        System.out.println("Is Elevated? " + os.isElevated());
+
+        System.out.println("-------------------------------------------------");
 
         System.out.println("Hardware Information:");
         System.out.println(hal.getDisplays());
@@ -61,14 +61,34 @@ public class Main {
         System.out.println(hal.getSoundCards());
 
         System.out.println("CPU Information:");
-        System.out.println(cpu.getContextSwitches());
+        System.out.println("Context Switches: " + cpu.getContextSwitches());
+        System.out.println("Current Freq: " + Arrays.toString(cpu.getCurrentFreq()));
+        System.out.println("Interrupts: " + cpu.getInterrupts());
+        System.out.println("Logical Processor Count: " + cpu.getLogicalProcessorCount());
+        System.out.println("Max Freq: " + cpu.getMaxFreq());
+        System.out.println("Logical Processors: " + cpu.getLogicalProcessors());
+        System.out.println("Physical Package Count: " + cpu.getPhysicalPackageCount());
+        System.out.println("Physical Processor Count: " + cpu.getPhysicalProcessorCount());
+        System.out.println("Processor CPU Load Ticks: " + Arrays.deepToString(cpu.getProcessorCpuLoadTicks()));
+        System.out.println("Processor Identifier: " + cpu.getProcessorIdentifier());
+        System.out.println("System Load Average: " + Arrays.toString(cpu.getSystemLoadAverage(1)));
+        System.out.println("System CPU Load Ticks: " + Arrays.toString(cpu.getSystemCpuLoadTicks()));
+
+        System.out.println("-------------------------------------------------");
+
+        System.out.println("GPU information:");
+
+
+        System.out.println("-------------------------------------------------");
 
         System.out.println("Computer System");
-        System.out.println(cs.getBaseboard());
-        System.out.println(cs.getManufacturer());
-        System.out.println(cs.getFirmware());
-        System.out.println(cs.getSerialNumber());
-        System.out.println(cs.getHardwareUUID());
+        System.out.println("Baseboard: " + cs.getBaseboard());
+        System.out.println("Manufacturer: " + cs.getManufacturer());
+        System.out.println("Firmware: " + cs.getFirmware());
+        System.out.println("Serial Number: " + cs.getSerialNumber());
+        System.out.println("HardwareUUID: " + cs.getHardwareUUID());
+
+        System.out.println("-------------------------------------------------");
 
         SwingUtilities.invokeLater(new Runnable() {
             @Override
@@ -86,7 +106,6 @@ public class Main {
                 p.add(Components.TextField("Text field"));
                 p.add(Components.LabelText("Label: "));
                 p.add(Components.TextField("Text field"));
-                p.setOpaque(false);
             }
         });
 
