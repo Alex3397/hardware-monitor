@@ -1,0 +1,31 @@
+uname
+lshw
+lscpu
+lsblk
+lsusb
+lspci
+lsscsi
+fdisk
+dmidecode
+inxi
+hdparm
+df
+ifconfig
+netstat
+ip
+hwinfo
+https://www.cyberciti.biz/faq/how-to-check-os-version-in-linux-command-line/
+https://unix.stackexchange.com/questions/1150/how-to-find-information-about-the-system-machine-in-unix
+https://www.cyberciti.biz/faq/linux-command-to-find-the-system-configuration-and-hardware-information/
+https://howto.lintel.in/commands-to-check-system-information-on-linux/
+https://dev.to/mskian/get-your-linux-or-windows-system-information-1m3e
+
+Power comands:
+nvidia-smi stats -d pwrDraw
+
+Apps to learn from source code:
+htop
+bashtop
+ncdu
+ranger
+tmux
